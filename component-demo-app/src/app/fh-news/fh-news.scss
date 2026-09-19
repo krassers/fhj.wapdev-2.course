@@ -1,0 +1,67 @@
+:host {
+  /* Use flexbox on the host component to contain the news items */
+  display: flex;
+  /* Allow items to wrap if the container is too small, though for 4 in a row, it's better if they don't wrap initially */
+  flex-wrap: wrap;
+  /* Add some overall padding/margin */
+  padding: 20px;
+  /* Optional: Add a small gap between the news cards */
+  gap: 20px;
+}
+
+.news-card {
+  /* Make each card a flexible item */
+  display: flex;
+  flex-direction: column;
+  /* Set a fixed width to ensure four fit in a row */
+  /* Calculate the width: (100% - 3 * gap) / 4 */
+  /* If the parent has a fixed width, 25% would be easier, but using calc for responsiveness is better */
+  flex: 0 0 calc(25% - 15px); /* 25% of the container width minus a fraction of the gap */
+  min-width: 250px; /* Prevent cards from getting too small */
+  
+  /* Card Aesthetics */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background-color: #fff;
+  transition: transform 0.2s;
+  
+  /* Hover effect for interactivity */
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Image styling */
+  img {
+    width: 100%;
+    height: 150px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensures image covers the space without distortion */
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  /* Title styling */
+  h1 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  /* Date styling */
+  .date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+  /* Description styling */
+  .description {
+    font-size: 1em;
+    color: #555;
+    flex-grow: 1; /* Allows description to take up remaining space if heights vary */
+  }
+}

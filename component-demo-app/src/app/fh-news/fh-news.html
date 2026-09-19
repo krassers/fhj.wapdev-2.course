@@ -1,0 +1,6 @@
+<div class="news-card">
+  <img [src]="image() || defaultImage" alt="News Image" />
+  <h1>{{ title() }}</h1>
+  <p class="date">{{ date() | date : 'yyyy-MM-dd' }}</p>
+  <p class="description">{{ description() }}</p>
+</div>
