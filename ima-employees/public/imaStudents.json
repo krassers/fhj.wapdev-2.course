@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Max Mustermann",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Person_Image_Placeholder.png",
+    "cohort": "IMA22",
+    "specialisation": "IT Infrastructure"
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Person_Image_Placeholder.png",
+    "cohort": "IMA22",
+    "specialisation": "Software Engineering"
+  },
+  {
+    "id": 3,
+    "name": "Walter White",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Person_Image_Placeholder.png",
+    "cohort": "AIM19",
+    "specialisation": "Data Mining"
+  }
+]

@@ -1,0 +1,13 @@
+<div class="counter">
+  <p>{{ label() }}</p>
+  <button (click)="increment()">Click</button>
+  <button (click)="reset()">Reset</button>
+
+  <ul>
+    @for (milestone of reached(); track milestone) {
+      <li>Reached {{ milestone }}</li>
+    } @empty {
+      <li>No milestone yet</li>
+    }
+  </ul>
+</div>
