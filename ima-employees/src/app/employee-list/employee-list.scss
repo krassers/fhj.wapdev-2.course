@@ -1,0 +1,16 @@
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.employee-card {
+  width: 200px;
+  border: 1px solid #ddd;
+  padding: 12px;
+
+  img {
+    width: 100%;
+  }
+}

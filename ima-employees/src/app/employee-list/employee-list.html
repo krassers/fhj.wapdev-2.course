@@ -1,0 +1,16 @@
+<input type="search" [formControl]="filter" placeholder="Filter by name" />
+
+<div class="employee-list">
+  @for (employee of filtered(); track employee.id) {
+    <div class="employee-card">
+      <img [src]="employee.image" [alt]="employee.name" />
+      <h2>{{ employee.name }}</h2>
+      <div class="position" [innerHTML]="employee.position"></div>
+      @if (employee.description) {
+        <p class="description">{{ employee.description }}</p>
+      }
+    </div>
+  } @empty {
+    <p>No employee matches "{{ query() }}".</p>
+  }
+</div>
