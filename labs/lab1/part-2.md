@@ -6,8 +6,6 @@ cards without one.
 This time you only get requirements. There are no TODOs in the code, so you decide how to solve it.
 You already used everything you need in Part 1.
 
-You have ~30 minutes.
-
 ---
 
 ## Where you start
@@ -23,8 +21,7 @@ the same component with different data. That is what you do now.
 ## What it has to do
 
 1. **Define a type for a news entry.** It has a title, a description, a date and an image. The
-   image is optional. Some entries do not have one, and the type should say so. Then nobody who
-   reads your code has to guess.
+   image is optional. Some entries do not have one, and the type should say so. If you properly type objects you can prevent lots of common coding errors and save a lot of time you would spend debugging.
 
 2. **Hold several entries in `app.ts`.** The data is below as a paste block.
 
@@ -35,7 +32,7 @@ the same component with different data. That is what you do now.
    already did this in Part 1, so keep it when you rewrite the template.
 
 5. **An entry without an image shows the placeholder.** If your Part 1 was done properly, this
-   already works. Check that it does.
+   already works.
 
 6. **The cards are laid out in a row that wraps.** Put that in `app.scss` as a class. Do not use a
    `style="…"` attribute in the template.
