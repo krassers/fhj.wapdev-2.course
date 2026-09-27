@@ -1,0 +1,92 @@
+# Checks every published lab branch: the chain invariants once, then npm ci, ng build and
+# ng test on each lab ref. Lives on main only; see "CI" in CLAUDE.md for why, and for why a
+# push to a lab branch does not trigger it.
+
+name: labs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: labs
+  cancel-in-progress: true
+
+env:
+  NG_CLI_ANALYTICS: 'false'
+
+jobs:
+  chain:
+    name: chain invariants
+    runs-on: ubuntu-latest
+    outputs:
+      refs: ${{ steps.refs.outputs.refs }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # check-chain.sh reads local branches. A CI checkout has only main locally and
+      # every other branch under origin/, so mirror them first.
+      - name: Mirror the published branches as local branches
+        run: |
+          git for-each-ref --format='%(refname:lstrip=3)' refs/remotes/origin/ \
+            | { grep -vxE 'HEAD|main' || true; } \
+            | while read -r branch; do git branch -f "$branch" "origin/$branch"; done
+
+      - name: List the lab refs
+        id: refs
+        run: |
+          refs=$(git for-each-ref --format='%(refname:short)' refs/heads/ \
+                 | { grep -E '^lab[0-9]+/' || true; } \
+                 | jq -Rsc 'split("\n") | map(select(length > 0))')
+          echo "refs=$refs" >> "$GITHUB_OUTPUT"
+          echo "$refs"
+
+      - name: check-chain.sh
+        env:
+          CHAIN_PUBLISHED: '1'
+        run: bash scripts/check-chain.sh
+
+  build:
+    name: ${{ matrix.ref }}
+    needs: chain
+    # Build even when an invariant fails: a broken build is worth knowing about either way.
+    if: ${{ !cancelled() && needs.chain.outputs.refs != '' && needs.chain.outputs.refs != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ref: ${{ fromJSON(needs.chain.outputs.refs) }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ matrix.ref }}
+
+      # Node 24, the version students are told to install.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      # Every Angular project on the branch. That is one folder today; yamod may bring a
+      # frontend next to its Django backend, which this picks up without changes.
+      - name: npm ci, ng build, ng test
+        env:
+          REF: ${{ matrix.ref }}
+        run: |
+          projects=$(find . -name angular.json -not -path '*/node_modules/*' -exec dirname {} \; | sort)
+          [ -n "$projects" ] || { echo "::error::no Angular project on $REF"; exit 1; }
+          for project in $projects; do
+            echo "::group::$project"
+            (cd "$project" && npm ci && npx ng build && npx ng test --no-watch --no-progress) \
+              || { echo "::error::$project failed on $REF"; exit 1; }
+            echo "::endgroup::"
+          done
