@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { Counter } from './counter/counter';
-import { EmployeeList } from './employee-list/employee-list';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Counter, EmployeeList],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

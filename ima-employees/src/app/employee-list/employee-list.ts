@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Employee } from '../employee';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './employee-list.html',
   styleUrl: './employee-list.scss',
 })

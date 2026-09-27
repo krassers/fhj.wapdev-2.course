@@ -1,0 +1,14 @@
+@if (employee(); as found) {
+  <article class="employee-detail">
+    <img [src]="found.image" [alt]="found.name" />
+    <h2>{{ found.name }}</h2>
+    <div class="position" [innerHTML]="found.position"></div>
+    @if (found.description) {
+      <p>{{ found.description }}</p>
+    }
+  </article>
+} @else if (employees().length) {
+  <p>There is no employee with id {{ id() }}.</p>
+}
+
+<a routerLink="/employees">Back to the list</a>

@@ -1,5 +1,8 @@
 <h1>{{ title() }}</h1>
 
-<app-counter></app-counter>
+<nav>
+  <a routerLink="/employees">Employees</a>
+  <a routerLink="/counter">Counter</a>
+</nav>
 
-<app-employee-list></app-employee-list>
+<router-outlet></router-outlet>
