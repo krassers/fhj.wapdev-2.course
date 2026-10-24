@@ -102,7 +102,7 @@ by hand; see *Tooling*.
 ## Changing anything shared
 
 With the docs out of the chains, "shared" means a project's code and config: its `package.json`, the
-Angular version, `angular.json`, `.gitignore`, and for yamod the Django backend. Edit it at one point
+Angular version, `angular.json`, `.gitignore`, and for yamod the FastAPI backend in `yamod/backend/`. Edit it at one point
 and replay the rest of that chain:
 
 ```bash
@@ -261,7 +261,7 @@ belongs to. Run `npm ci` inside the project folder, never at the root.
 |---|---|---|
 | `component-demo-app/` | 1 | `lab1/*` |
 | `ima-employees/` | 2 | `lab2/*` |
-| `yamod/` | 3–6, Angular frontend plus provided Django backend | `lab3/*` to `lab6/*` |
+| `yamod/` | 3–6, Angular frontend in `yamod/frontend/` plus the provided FastAPI backend in `yamod/backend/` | `lab3/*` to `lab6/*` |
 
 There are no placeholder folders, and no project appears on another project's chain.
 

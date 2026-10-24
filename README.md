@@ -34,7 +34,7 @@ check one out, you have these folders:
 |---|---|---|
 | `component-demo-app/` | session 1 | Your first components |
 | `ima-employees/` | session 2 | Employee list, routing, signals |
-| `yamod/` | sessions 3 to 6 | Movie database, Angular frontend and Django backend |
+| `yamod/` | sessions 3 to 6 | Movie database, Angular frontend and FastAPI backend |
 
 Each folder is a separate project with its own `package.json`. Run `npm ci` inside the folder you
 are working in, not up here.

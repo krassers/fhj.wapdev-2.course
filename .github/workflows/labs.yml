@@ -77,7 +77,7 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       # Every Angular project on the branch. That is one folder today; yamod may bring a
-      # frontend next to its Django backend, which this picks up without changes.
+      # frontend next to its FastAPI backend, which this picks up without changes.
       - name: npm ci, ng build, ng test
         env:
           REF: ${{ matrix.ref }}
