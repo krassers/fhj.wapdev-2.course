@@ -62,6 +62,16 @@ git switch -c lab4/start lab3/solution
 
 Never create a lab branch off `main`; `main` has no code.
 
+A new chain root is `ng new` output (`--style=scss --ssr=false --ai-config=none --skip-git`),
+cleaned up before the first commit:
+
+- Delete the generated `<project>/README.md`. A lab branch carries the stub README and no other
+  markdown (invariant 2).
+- The generated `app.spec.ts` asserts `Hello, <project>` in the `h1`. Once the placeholder template
+  is gone the `h1` is `{{ title() }}`, so the assertion becomes `toContain('<project>')`.
+- Write `@Component` keys in the order `selector`, `imports`, `templateUrl`, `styleUrl`. CLI 22.2
+  generates `imports` first; every committed component uses the Lab 1 order.
+
 Invariant to preserve: within a chain, each ref is a strict ancestor of the next. Do not check this
 by hand; see *Tooling*.
 
@@ -201,6 +211,20 @@ Angular 22, Node 24 LTS, standalone, zoneless by default. The training-data defa
 - `signal` / `computed` for state; derived values are `computed()`, not recomputed in `ngOnInit`.
 - Reactive forms, not signal forms — a deliberate teaching choice, not an oversight.
 - RxJS is scoped to `map`, `filter`, `debounceTime`, `switchMap`. Nothing else appears in the course.
+
+**Specs.** CI runs `ng test`, and every generated spec renders its component. Two consequences:
+
+- A component that injects `HttpClient` needs `providers: [provideHttpClientTesting()]` in its spec.
+  That alone is enough; no `provideHttpClient()` before it. Without it the root `HttpClient` makes a
+  real fetch, the relative URL fails in jsdom, and the error is unhandled: every test passes and
+  `ng test` still exits 1.
+- The same applies to the spec of every component that *renders* such a component, `app.spec.ts`
+  included. A component using `RouterLink`/`RouterOutlet` needs `provideRouter([])`; one with an
+  `input.required()` needs `fixture.componentRef.setInput(…)` before `whenStable()`.
+
+**`ng build` does not catch a missing `RouterLink`.** `routerLink="/x"` without `RouterLink` in the
+component's `imports` compiles and renders a plain attribute: a dead link, no error. Only
+`[routerLink]` fails (NG8002). Acceptance for any branch with navigation clicks every link.
 
 When in doubt, fetch current Angular docs rather than answering from memory.
 
