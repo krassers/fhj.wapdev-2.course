@@ -61,7 +61,7 @@ The Extension part has no branch. It is open-ended, so there is no single answer
 
 **Put the lab number in the name of every branch you create.** `lab1-part1`, `lab2-part1`, `lab3-part2` — not `part1`.
 
-After Part 1 the whole room stops once. If your Part 1 is not done, you move to
+After Part 1 we do a short alignment. If your Part 1 is not done, commit your changes, move to
 `labN/checkpoint` and carry on with Part 2 from there. If it is done, you carry on with your own
 code.
 
