@@ -42,6 +42,30 @@ longer. Only yamod lives across several labs, so only the yamod chain is longer 
 
 Every lab branch carries a short stub `README.md` pointing at `main`, and no other markdown.
 
+### `next`: task pages for labs not yet taught
+
+`main` is what students see, and it has to stay pushable at any moment, including for a Lab 1 fix
+the week before session 2. So task pages for a lab that is not taught yet do not go on `main`. They
+go on a local branch `next`, which sits on top of `main` and is never pushed to `origin`:
+
+```
+origin/main ─ … ─ main ─ next        main: current and past labs     next: + the labs to come
+```
+
+- A fix for a current or past lab, or a change to this file: commit on `main`, then
+  `git rebase main next`.
+- Task pages, README sections and course-README lines for a coming lab: commit on `next`. Each
+  commit touches one lab only, so `main` can later take a prefix of `next`.
+- Before that lab's session: fast-forward `main` to the last commit of that lab on `next`
+  (`git branch -f main <sha>`, or `git merge --ff-only` from `main`), then push `main` together with
+  the lab's `start` and `checkpoint`.
+
+`rebase.updateRefs = true` moves every branch that points into the rebased range, so a backup branch
+on an old `next` commit moves with the rebase. Tag it instead, or set it again afterwards.
+
+The lab chains need no such branch: an unpublished lab ref simply stays local until its session (see
+*Freeze policy*).
+
 ## Creating a lab
 
 The first lab of a project starts a new root commit, and its name goes into `CHAIN_ROOTS` at the
