@@ -47,15 +47,13 @@ you get an alert with the text `Custom message`.
 
 ## 2. Part 1, Part 2, Extension
 
-**Everybody starts at Part 1, don't pick a level**
+**Everybody starts at Part 1**
 
 | | Page | What it is |
 |---|---|---|
-| Part 1 | [`part-1.md`](part-1.md) | One news card on screen. The hard part is given. |
-| Part 2 | [`part-2.md`](part-2.md) | Several cards from a typed array. Requirements only, no scaffold. |
+| Part 1 | [`part-1.md`](part-1.md) | One news card on screen. Instructions are given. |
+| Part 2 | [`part-2.md`](part-2.md) | Several cards from a typed array. Requirements only, no instructions. |
 | Extension | [`extension.md`](extension.md) | Open-ended. |
-
-Read one page at a time. Each page assumes the one before it is done.
 
 ---
 
