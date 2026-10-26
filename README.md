@@ -39,8 +39,8 @@ check one out, you have these folders:
 Each folder is a separate project with its own `package.json`. Run `npm ci` inside the folder you
 are working in, not up here.
 
-The folders for later sessions do not exist yet. `ima-employees/` arrives at `lab2/start` and
-`yamod/` at `lab3/start`.
+A folder appears at its lab's start branch: `ima-employees/` at `lab2/start`, `yamod/` at
+`lab3/start`.
 
 ---
 
@@ -78,12 +78,16 @@ before you switch.**
 
 ## 4. Where the tasks are
 
-The tasks are not on the slides. They are on `main`, under `labs/`. For session 1:
+The tasks are not on the slides. They are on `main`, under [`labs/`](labs/), one folder per
+session: `labs/lab1/` for session 1, `labs/lab2/` for session 2, and so on. A session's folder
+appears on the day of that session.
 
-- [`labs/lab1/README.md`](labs/lab1/README.md) — start here
-- [`labs/lab1/part-1.md`](labs/lab1/part-1.md)
-- [`labs/lab1/part-2.md`](labs/lab1/part-2.md)
-- [`labs/lab1/extension.md`](labs/lab1/extension.md)
+Each folder has the same four pages:
+
+- `README.md` — start here
+- `part-1.md`
+- `part-2.md`
+- `extension.md`
 
 Read one at a time.
 
