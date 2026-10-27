@@ -1,0 +1,15 @@
+<h2>Genres</h2>
+
+@if (loading()) {
+  <p>Loading genres …</p>
+} @else if (error()) {
+  <p class="error">{{ error() }}</p>
+} @else {
+  <ul class="genres">
+    @for (genre of genres(); track genre.id) {
+      <li>{{ genre.name }}</li>
+    } @empty {
+      <li>There are no genres yet.</li>
+    }
+  </ul>
+}
