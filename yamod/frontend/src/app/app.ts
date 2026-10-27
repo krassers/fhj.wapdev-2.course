@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { GenreList } from './genre-list/genre-list';
-import { MovieList } from './movie-list/movie-list';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [GenreList, MovieList],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

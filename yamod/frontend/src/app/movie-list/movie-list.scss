@@ -12,3 +12,7 @@
 .genre + .genre::before {
   content: ', ';
 }
+
+.error {
+  color: #b00020;
+}

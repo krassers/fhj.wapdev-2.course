@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: #b00020;
+}

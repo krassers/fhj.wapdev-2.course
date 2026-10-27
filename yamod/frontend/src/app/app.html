@@ -1,5 +1,9 @@
 <h1>{{ title() }}</h1>
 
-<app-genre-list></app-genre-list>
+<nav>
+  <a routerLink="/movies">Movies</a>
+  <a routerLink="/movies/new">New movie</a>
+  <a routerLink="/genres">Genres</a>
+</nav>
 
-<app-movie-list></app-movie-list>
+<router-outlet></router-outlet>

@@ -24,3 +24,15 @@ export interface Page<T> {
   items: T[];
   total: number;
 }
+
+export interface MovieInput {
+  rank: number | null;
+  title: string;
+  description: string;
+  released: string;
+  run_time: number | null;
+  rating: number | null;
+  genres: number[];
+  director: number | null;
+  actors: number[];
+}
