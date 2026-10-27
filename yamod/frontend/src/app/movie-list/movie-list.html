@@ -1,0 +1,26 @@
+<h2>Movies</h2>
+
+<table class="movies">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Genres</th>
+      <th>Released</th>
+      <th>Runtime</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (movie of movies(); track movie.id) {
+      <tr>
+        <td>{{ movie.title }}</td>
+        <td>
+          @for (genre of movie.genres; track genre.id) {
+            <span class="genre">{{ genre.name }}</span>
+          }
+        </td>
+        <td>{{ movie.released | date: 'dd.MM.yyyy' }}</td>
+        <td>{{ movie.run_time }} min</td>
+      </tr>
+    }
+  </tbody>
+</table>
