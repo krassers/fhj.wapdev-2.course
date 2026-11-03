@@ -10,8 +10,9 @@ You already used everything you need in Part 1.
 
 ## Where you start
 
-You have one news card on screen. Its values are written directly in `app.html`. This is your own
-Part 1 if everything on its *Done when* list was true. Otherwise use the branch `lab1/checkpoint`.
+If everything on Part 1's *Done when* list was true, you continue with your own code: one news
+card, with its values written directly in `app.html`. Otherwise you start from `lab1/checkpoint`,
+which has the same state.
 
 A component that shows one hard-coded card is only used once. Inputs exist so that you can reuse
 the same component with different data. That is what you do now.
@@ -20,21 +21,19 @@ the same component with different data. That is what you do now.
 
 ## What it has to do
 
-1. **Define a type for a news entry.** It has a title, a description, a date and an image. The
-   image is optional. Some entries do not have one, and the type should say so. If you properly type objects you can prevent lots of common coding errors and save a lot of time you would spend debugging.
+1. Define a type for a news entry. It has a title, a description, a date and an image. The image
+   is optional: some entries have none, and the type should say so.
 
-2. **Hold several entries in `app.ts`.** The data is below as a paste block.
+2. Hold several entries in `app.ts`. The data is below as a paste block.
 
-3. **Render all of them** with `@for`. Each entry becomes one `<app-fh-news>`. Give `@for` a
-   sensible `track`.
+3. Render all of them with `@for`, one `<app-fh-news>` per entry. Give `@for` a sensible `track`.
 
-4. **Format the date** with Angular's built-in `date` pipe. No raw `Date` objects on screen. You
-   already did this in Part 1, so keep it when you rewrite the template.
+4. Format the date with Angular's `date` pipe, as in Part 1. Keep it when you rewrite the template.
 
-5. **An entry without an image shows the placeholder.** If your Part 1 was done properly, this
-   already works.
+5. An entry without an image shows the placeholder. If your card already falls back to
+   `defaultImage`, this works without changes.
 
-6. **The cards are laid out in a row that wraps.** Put that in `app.scss` as a class. Do not use a
+6. The cards are laid out in a row that wraps. Put that in `app.scss` as a class. Do not use a
    `style="…"` attribute in the template.
 
 ---
@@ -44,7 +43,7 @@ the same component with different data. That is what you do now.
 The data below uses a type called `NewsItem`. Declare it above the class in `app.ts` before you
 paste the data.
 
-*Paste this into the `App` class. Typing four paragraphs of fake news is not the exercise.*
+*Paste this into the `App` class:*
 
 ```ts
   news: NewsItem[] = [
@@ -77,15 +76,15 @@ paste the data.
 
 ---
 
-## Two things worth getting right
+## Two details
 
-**`track` matters.** `@for` has to know which DOM element belongs to which entry. When the array
-changes, Angular can then move elements instead of rebuilding them. So track something that
-*identifies the entry*. `track $index` compiles and runs, but it loses exactly this. The index is a
-fact about the array and not about the entry.
+`@for` has to know which DOM element belongs to which entry. When the array changes, Angular can
+then move elements instead of rebuilding them. Track a value that identifies the entry.
+`track $index` compiles and runs, but an index describes a position in the array and changes when
+entries move.
 
-**The single card in `app.html` goes away.** You replace it with the list. You do not add the list
-next to it. The `firstNewsDate` property it used goes away as well.
+Replace the single card in `app.html` with the list, and remove the `firstNewsDate` property it
+used.
 
 ---
 
@@ -101,9 +100,8 @@ next to it. The `firstNewsDate` property it used goes away as well.
 
 ## Stuck?
 
-You can ask me or the people around you if you need help. You have until
-the end of the session, and it is fine if Part 2 takes all of it. The Extension is only for once
-this is done.
+Ask me or the people around you. You have until the end of the session, and it is fine if Part 2
+takes all of it.
 
 `lab1/solution` shows one way of solving it. Look at it once yours works, or after the session. Do
 not use it instead of writing your own.

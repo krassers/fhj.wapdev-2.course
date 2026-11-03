@@ -9,13 +9,13 @@ Topic of the day: a component is a reusable unit with inputs.
 
 ## 1. Before anything else: pre-flight check
 
-Work through this section in order. Every check has to pass. If one of them
-fails, ask me or the people around you for help.
+Work through this section in order. Every check has to pass. If one fails, ask me or the people
+around you for help.
 
 ```bash
 node --version
 ```
-Has to print v22.22.3 or higher. If it does not, install Node 24 LTS.
+Has to print v22.22.3 or higher. If the version is older, install Node 24 LTS.
 
 Then install the Angular CLI. You need it on your PATH to run `ng new`:
 
@@ -26,7 +26,8 @@ npm install -g @angular/cli
 ```bash
 ng version
 ```
-Has to print Angular CLI 22.x. If it prints an older major version you can run`npm install -g @angular/cli@latest` to update it.
+Has to print Angular CLI 22.x. If it prints an older major version, update it with
+`npm install -g @angular/cli@latest`.
 
 ```bash
 npm ci
@@ -47,47 +48,44 @@ you get an alert with the text `Custom message`.
 
 ## 2. Part 1, Part 2, Extension
 
-**Everybody starts at Part 1**
+Everybody starts at Part 1.
 
 | | Page | What it is |
 |---|---|---|
-| Part 1 | [`part-1.md`](part-1.md) | One news card on screen. Instructions are given. |
-| Part 2 | [`part-2.md`](part-2.md) | Several cards from a typed array. Requirements only, no instructions. |
+| Part 1 | [`part-1.md`](part-1.md) | One news card on screen. Step-by-step instructions. |
+| Part 2 | [`part-2.md`](part-2.md) | Several cards from a typed array. Requirements only. |
 | Extension | [`extension.md`](extension.md) | Open-ended. |
 
 ---
 
 ## 3. The checkpoint
 
-After about 30 minutes we will go through Part 1 together and then continue with Part 2. Before continuing with Part 2, commit your changes with the command below.
+After about 30 minutes we go through Part 1 together. Before you continue with Part 2, commit your
+changes:
 
 ```bash
 git add -A && git commit -m "my part 1 attempt"
 ```
 
-Now look at the *Done when* list at the end of the [Part 1 page](part-1.md).
+Then check the *Done when* list at the end of the [Part 1 page](part-1.md).
 
-- **Everything on it is true:** carry on with Part 2 on your own code. You do not need the next
-  command.
-- **Anything is not true, or you are not sure:** move to the checkpoint and start Part 2 from
-  there. Your own work is not lost. It stays on your branch.
+- If everything on it is true, continue with Part 2 on your own code.
+- If something on it is not true, or you are not sure, start Part 2 from the checkpoint. Your own
+  work stays on your branch.
 
-```bash
-git checkout -b lab1-part2 origin/lab1/checkpoint
-```
-
-Part 1 & 2 contain the content that matter the most for today. Only start Extension once Part 2 is done.
+  ```bash
+  git checkout -b lab1-part2 origin/lab1/checkpoint
+  ```
 
 ---
 
 ## 4. Reading the scaffold
 
-Part 1 gives you code in two forms.
+The task pages contain paste blocks, each introduced by a line in italics (*Paste this into …*).
+They hold code you do not write yourself: styling, starter code and test data. Paste them as they
+are; you do not have to read every line.
 
-Paste blocks are marked as such. That is styling and test data. Paste it and move on, you do not
-have to read every line.
-
-Inside those blocks there are TODO comments:
+Some paste blocks contain TODO comments:
 
 ```ts
   title = input<string>('');
@@ -95,8 +93,8 @@ Inside those blocks there are TODO comments:
   // image may be absent, so what should its type be?
 ```
 
-Those are the actual work. Do not search the repo for TODOs before you start. There are none. They come in when you paste the
-blocks.
+The TODOs are the actual work. They appear when you paste the blocks, so the repo has none before
+you start.
 
 ---
 
@@ -108,8 +106,8 @@ blocks.
 | `src/app/alert-button/` | Finished example. Read it before you write anything. |
 | `public/image.png` | Placeholder image for news entries that have no image. |
 
-`alert-button` is not a task. It contains the decorator, the selector, two inputs, a click handler
-and component styles. You use all of those today, so read it first.
+`alert-button` contains the decorator, the selector, two inputs, a click handler and component
+styles. You use all of them today.
 
 ---
 
