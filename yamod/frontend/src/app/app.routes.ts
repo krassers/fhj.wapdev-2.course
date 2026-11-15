@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { GenreForm } from './genre-form/genre-form';
 import { GenreList } from './genre-list/genre-list';
 import { MovieForm } from './movie-form/movie-form';
 import { MovieList } from './movie-list/movie-list';
@@ -9,5 +10,6 @@ export const routes: Routes = [
   { path: 'movies/new', component: MovieForm },
   { path: 'movies/:id/edit', component: MovieForm },
   { path: 'genres', component: GenreList },
+  { path: 'genres/new', component: GenreForm },
   { path: '**', redirectTo: 'movies' },
 ];

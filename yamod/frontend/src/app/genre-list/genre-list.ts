@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Genre } from '../genre';
+import { GenreService } from '../genre-service';
 
 @Component({
   selector: 'app-genre-list',
@@ -9,14 +9,14 @@ import { Genre } from '../genre';
   styleUrl: './genre-list.scss',
 })
 export class GenreList {
-  private readonly http = inject(HttpClient);
+  private readonly genreService = inject(GenreService);
 
   genres = signal<Genre[]>([]);
   loading = signal(true);
   error = signal('');
 
   constructor() {
-    this.http.get<Genre[]>('/api/genres/').subscribe({
+    this.genreService.getGenres().subscribe({
       next: (genres) => {
         this.genres.set(genres);
         this.loading.set(false);
