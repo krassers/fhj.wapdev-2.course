@@ -1,18 +1,7 @@
-.movies {
-  border-collapse: collapse;
-
-  th,
-  td {
-    padding: 4px 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-}
-
 .genre + .genre::before {
   content: ', ';
 }
 
 .error {
-  color: #b00020;
+  color: var(--mat-sys-error);
 }

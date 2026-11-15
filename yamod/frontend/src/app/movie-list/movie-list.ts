@@ -1,17 +1,21 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Movie } from '../movie';
 import { MovieService } from '../movie-service';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, MatButtonModule, MatTableModule],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.scss',
 })
 export class MovieList {
   private readonly movieService = inject(MovieService);
+
+  columns = ['title', 'genres', 'released', 'run_time', 'actions'];
 
   movies = signal<Movie[]>([]);
   loading = signal(true);

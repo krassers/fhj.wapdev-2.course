@@ -1,10 +1,17 @@
-<h1>{{ title() }}</h1>
+<mat-toolbar>
+  <h1>{{ title() }}</h1>
+  <button matButton [matMenuTriggerFor]="movieMenu">Movies</button>
+  <mat-menu #movieMenu="matMenu">
+    <a mat-menu-item routerLink="/movies">All movies</a>
+    <a mat-menu-item routerLink="/movies/new">New movie</a>
+  </mat-menu>
+  <button matButton [matMenuTriggerFor]="genreMenu">Genres</button>
+  <mat-menu #genreMenu="matMenu">
+    <a mat-menu-item routerLink="/genres">All genres</a>
+    <a mat-menu-item routerLink="/genres/new">New genre</a>
+  </mat-menu>
+</mat-toolbar>
 
-<nav>
-  <a routerLink="/movies">Movies</a>
-  <a routerLink="/movies/new">New movie</a>
-  <a routerLink="/genres">Genres</a>
-  <a routerLink="/genres/new">New genre</a>
-</nav>
-
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>

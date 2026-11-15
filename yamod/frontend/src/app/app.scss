@@ -1,10 +1,12 @@
-:host {
-  display: block;
-  padding: 16px;
+mat-toolbar {
+  gap: 8px;
 }
 
-nav {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+h1 {
+  margin: 0 16px 0 0;
+  font: var(--mat-sys-title-large);
+}
+
+main {
+  padding: 16px;
 }

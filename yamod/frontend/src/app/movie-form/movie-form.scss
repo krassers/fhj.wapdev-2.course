@@ -5,11 +5,6 @@ form {
   max-width: 400px;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-}
-
 .error {
-  color: #b00020;
+  color: var(--mat-sys-error);
 }
